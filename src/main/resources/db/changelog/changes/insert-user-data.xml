@@ -8,7 +8,8 @@
             <column name="id" valueNumeric="1"/>
             <column name="username" value="John Doe"/>
             <column name="email" value="JohnDoe@gmail.com"/>
-            <column name="password" value="$2a$10$nezDN5pqRv9P3U2y8cTac.1zic9AnMbKyIqO4/dvL7wIIm7tQrpUa"/>
+            <!--encoded "1234"-->
+            <column name="password" value="$2a$10$GpvJi7pjAJA2EPy2bUf.q.JirsPCotU.IWj8JwvG2Z5vd5kC/szzq"/>
         </insert>
     </changeSet>
 </databaseChangeLog>
