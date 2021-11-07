@@ -10,6 +10,6 @@ public interface SongService {
 
     Song update(Song song);
 
-    void delete(long id);
+    boolean delete(long id);
 
 }

@@ -28,11 +28,19 @@ public class SongServiceImpl implements SongService {
 
     @Override
     public Song update(Song song) {
+        if (findById(song.getId()) == null) {
+            return null;
+        }
         return repository.save(song);
     }
 
     @Override
-    public void delete(long id) {
+    public boolean delete(long id) {
+        if (findById(id) == null) {
+            return false;
+        }
+
         repository.deleteById(id);
+        return findById(id) == null;
     }
 }

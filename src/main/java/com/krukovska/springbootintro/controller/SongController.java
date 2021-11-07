@@ -24,7 +24,7 @@ public class SongController {
     public ResponseEntity<Song> createSong(@RequestBody Song song) {
         Song createdEvent = songService.create(song);
         log.info("Created new song {}", createdEvent);
-        return new ResponseEntity<>(createdEvent, HttpStatus.OK);
+        return new ResponseEntity<>(createdEvent, HttpStatus.CREATED);
     }
 
     @PutMapping(value = "")
@@ -42,10 +42,10 @@ public class SongController {
     }
 
     @DeleteMapping(value = "/{songId}")
-    public ResponseEntity<HttpStatus> deleteSong(@PathVariable("songId") Long songId) {
+    public ResponseEntity<Boolean> deleteSong(@PathVariable("songId") Long songId) {
         log.info("REST call to delete event with id {}", songId);
         songService.delete(songId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(songService.delete(songId), HttpStatus.OK);
     }
 
 }

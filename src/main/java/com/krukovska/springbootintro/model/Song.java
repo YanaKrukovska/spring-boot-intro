@@ -25,4 +25,9 @@ public class Song {
     @Column
     private int year;
 
+    public Song(String title, String artist, int year) {
+        this.title = title;
+        this.artist = artist;
+        this.year = year;
+    }
 }
