@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet id="1" author="YK">
+        <createTable tableName="user">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="user_id_pk" />
+            </column>
+            <column name="username" type="varchar(250)">
+                <constraints unique="true" uniqueConstraintName="user_username_unq" />
+            </column>
+            <column name="email" type="varchar(250)">
+                <constraints unique="true" uniqueConstraintName="user_email_unq" />
+            </column>
+            <column name="password" type="varchar(250)" />
+        </createTable>
+        <createTable tableName="song">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="song_id_pk" />
+            </column>
+            <column name="title" type="varchar(250)" />
+            <column name="artist" type="varchar(250)" />
+            <column name="year" type="int" />
+        </createTable>
+        <addAutoIncrement tableName="user" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1" />
+        <addAutoIncrement tableName="song" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1" />
+        <createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1" />
+    </changeSet>
+    <include file="/db/changelog/changes/insert-song-data.xml"/>
+    <include file="/db/changelog/changes/insert-user-data.xml"/>
+
+</databaseChangeLog>
